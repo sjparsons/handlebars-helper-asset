@@ -45,7 +45,20 @@ module.exports.register = function (Handlebars, options, params) {
    * ```
    */
   Handlebars.registerHelper('asset', function (filepath) {
-    return path.join(options.assets, filepath).replace(/\\/g, '/');
+    var assets,i;
+
+    for(i in options.pages) {
+      console.log(i)
+      if (options.pages[i].isCurrentPage) {
+        assets = options.pages[i].assets;
+        break;
+      }
+    }
+    if (!assets) {
+      assets = options.assets;
+    }
+
+    return path.join(assets, filepath).replace(/\\/g, '/');
   });
 
 };
