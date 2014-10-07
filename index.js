@@ -48,7 +48,6 @@ module.exports.register = function (Handlebars, options, params) {
     var assets,i;
 
     for(i in options.pages) {
-      console.log(i)
       if (options.pages[i].isCurrentPage) {
         assets = options.pages[i].assets;
         break;
